@@ -1,0 +1,53 @@
+@use '../abstracts/variables';
+$colors:(
+    "primary":variables.$primary,
+    "secondary":variables.$secondary,
+    "tertiary":variables.$tertiary
+);
+
+@each $key,$val in $colors{
+
+    .text-hover-#{$key}{
+        &:hover{
+            color: $val;
+        }
+    }
+    // text-color
+    .text-#{$key}{
+        color: $val;
+    } 
+    
+    // // text-color-dark-light-variation
+    @for $i from 1 through 9{
+        @if $val!=white and $val!=black{
+            .text-#{$key}-dark-#{$i}{
+                color: mix(black,$val, $weight: $i*10%);
+            }
+            .text-#{$key}-light-#{$i}{
+                color: mix(white,$val, $weight: $i*10%);
+            }
+        }
+    }
+
+    // background-color
+    .bg-hover-#{$key}{
+        &:hover{
+            background-color: $val;
+        }
+    }
+    .bg-#{$key}{
+        background-color: $val;
+    }
+
+    // // background-color-light-dark-variation{
+    @for $i from 1 through 9{
+        @if $val!=white and $val!=black{
+            .bg-#{$key}-dark-#{$i}{
+                background-color: mix(black,$val, $weight: $i*10%);
+            }
+            .bg-#{$key}-light-#{$i}{
+                background-color: mix(white,$val, $weight: $i*10%);
+            }
+        }
+    }
+}   

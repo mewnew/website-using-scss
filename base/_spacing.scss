@@ -1,0 +1,192 @@
+@use '../abstracts/variables';
+@use'sass:math';
+@use '../base/colors';
+
+$spacing:(
+    'padding':(
+      'prefix':'p',
+      'values':(
+        '0':0,
+        '1':variables.$base-padding,
+        '2':variables.$base-padding*2,
+        '3':variables.$base-padding*3,
+        '4':variables.$base-padding*4,
+        '5':variables.$base-padding*5
+      )
+    ),
+    'padding-top':(
+      'prefix':'pt',
+      'values':(
+        '0':0,
+        '1':variables.$base-padding,
+        '2':variables.$base-padding*2,
+        '3':variables.$base-padding*3,
+        '4':variables.$base-padding*4,
+        '5':variables.$base-padding*5,
+        '6':variables.$base-padding*10,
+        '7':variables.$base-padding*15,
+        '8':variables.$base-padding*20,
+        '9':variables.$base-padding*25
+      )
+    ),
+    'padding-bottom':(
+      'prefix':'pb',
+      'values':(
+        '0':0,
+        '1':variables.$base-padding,
+        '2':variables.$base-padding*2,
+        '3':variables.$base-padding*3,
+        '4':variables.$base-padding*4,
+        '5':variables.$base-padding*5,
+        '6':variables.$base-padding*10,
+        '7':variables.$base-padding*15,
+        '8':variables.$base-padding*20,
+        '9':variables.$base-padding*25
+      )
+    ),
+    'padding-left':(
+      'prefix':'pl',
+      'values':(
+        '0':0,
+        '1':variables.$base-padding,
+        '2':variables.$base-padding*2,
+        '3':variables.$base-padding*3,
+        '4':variables.$base-padding*4,
+        '5':variables.$base-padding*5
+      )
+    ),
+    'padding-right':(
+      'prefix':'pr',
+      'values':(
+        '0':0,
+        '1':variables.$base-padding,
+        '2':variables.$base-padding*2,
+        '3':variables.$base-padding*3,
+        '4':variables.$base-padding*4,
+        '5':variables.$base-padding*5
+        
+      )
+    ),
+    'margin':(
+        'prefix':'m',
+        'values':(
+            '0':0,
+            '1':variables.$base-margin,
+            '2':variables.$base-margin*2,
+            '3':variables.$base-margin*3,
+            '4':variables.$base-margin*4,
+            '5':variables.$base-margin*5,
+            'a':auto
+        )
+    ),
+    'width':(
+      'prefix':'w',
+      'values':(
+        'fc':fit-content
+      )
+    ),
+    'margin-top':(
+        'prefix':'mt',
+        'values':(
+            '0':0,
+            '1':variables.$base-margin,
+            '2':variables.$base-margin*2,
+            '3':variables.$base-margin*3,
+            '4':variables.$base-margin*4,
+            '5':variables.$base-margin*5,
+            '6':variables.$base-margin*10,
+            '7':variables.$base-margin*15,
+            '8':variables.$base-margin*20,
+            '9':variables.$base-margin*25
+        )
+    ),
+    'margin-bottom':(
+        'prefix':'mb',
+        'values':(
+            '0':0,
+            '1':variables.$base-margin,
+            '2':variables.$base-margin*2,
+            '3':variables.$base-margin*3,
+            '4':variables.$base-margin*4,
+            '5':variables.$base-margin*5,
+            '6':variables.$base-margin*10,
+            '7':variables.$base-margin*15,
+            '8':variables.$base-margin*20,
+            '9':variables.$base-margin*25
+        )
+    ),
+    'margin-left':(
+        'prefix':'ml',
+        'values':(
+            '0':0,
+            '1':variables.$base-margin,
+            '2':variables.$base-margin*2,
+            '3':variables.$base-margin*3,
+            '4':variables.$base-margin*4,
+            '5':variables.$base-margin*5
+        )
+    ),
+    'margin-right':(
+        'prefix':'mr',
+        'values':(
+            '0':0,
+            '1':variables.$base-margin,
+            '2':variables.$base-margin*2,
+            '3':variables.$base-margin*3,
+            '4':variables.$base-margin*4,
+            '5':variables.$base-margin*5
+        )
+    ),
+    'border-radius':(
+      'prefix':'br',
+      'values':(
+              "default":variables.$base-border-radius,
+              "none":0,
+              "xs":math.div(variables.$base-border-radius,4),
+              "sm":math.div(variables.$base-border-radius,2),
+              "lg":variables.$base-border-radius*2,
+              "full":50%
+          )
+      )
+
+);
+
+@each $property,$value in $spacing{
+    $prefix:map-get($value,'prefix');
+    $val:map-get($value,'values');
+    @each $i,$j in $val{
+      @if $i=='default'{
+        .#{$prefix}{
+          #{$property}:$j;
+      }
+      }
+      @else{
+        .#{$prefix}-#{$i}{
+            #{$property}:$j;
+        }
+      }
+        
+    }
+}
+
+@mixin coloring($n,$col){
+    border-bottom: $n+px solid $col;
+}
+// $border:(
+//   '0':none,
+//   '1':1px solid $col,
+//   '2':2px solid $col,
+//   '3':3px solid $col,
+//   '4':4px solid $col,
+// );
+
+@for $i from 1 through 4{
+  @each $key,$val in colors.$colors{
+    .b-#{$i}-#{$key}{
+      @include coloring($i,$val)
+    }
+  }
+
+
+}
+

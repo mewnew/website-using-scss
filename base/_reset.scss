@@ -1,0 +1,39 @@
+@use '../abstracts/variables';
+@use'../layout/breakpoints';
+@import url(variables.$font-family-link);
+*,*::after,*::before{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root{
+    @include breakpoints.sm{
+        font-size: variables.$root-font-size-sm;
+    }
+    @include breakpoints.md{
+        font-size: variables.$root-font-size-md;
+    }
+    @include breakpoints.lg{
+         font-size:variables.$root-font-size;
+    }
+   
+}
+
+a{
+    text-decoration: none;
+    display: inline-block;
+
+}
+
+ul,ol{
+    list-style: none;
+}
+
+img{
+    display: block;
+    width: 100%;
+}
+body{
+    font-family:variables.$font-family-main
+}
+

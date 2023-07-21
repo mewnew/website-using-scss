@@ -1,0 +1,81 @@
+@use 'sass:math';
+@use 'breakpoints';
+$total-columns:12;
+
+.row{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+
+$flex-fixing:(
+    'justify-content':(flex-start flex-end center space-between space-around),
+    'align-items':(flex-start,flex-end,stretch,baseline,center),
+    'align-content':(flex-start,flex-end,center,space-around,space-between)
+);
+
+@each $key,$val in $flex-fixing{
+    @each $i in $val{
+        .#{$key}-#{$i}{
+            #{$key}:$i;
+        }
+    }
+    
+}
+
+.cols-3-sm{
+    flex-basis: math.div(3,$total-columns)*100%;
+    flex-grow: none;
+}
+
+@include breakpoints.sm{
+    @for $i from 1 through 12{
+        .cols-#{$i}-sm{
+            flex-grow: 0;
+            width: math.div($i,$total-columns)*100%;
+        }
+    }     
+}
+@include breakpoints.md{
+    @for $i from 1 through 12{
+        .cols-#{$i}-md{
+            flex-grow: 0;
+            width: math.div($i,$total-columns)*100%;
+        }
+    }     
+}
+@include breakpoints.lg{
+    @for $i from 1 through 12{
+        .cols-#{$i}-lg{
+            flex-grow: 0;
+            width: math.div($i,$total-columns)*100%;
+        }
+    }     
+}
+@include breakpoints.xl{
+    @for $i from 1 through 12{
+        .cols-#{$i}-xl{
+            flex-grow: 0;
+            width: math.div($i,$total-columns)*100%;
+        }
+    }     
+}
+
+$gap:(
+    '0':none,
+    '1':1rem,
+    '2':2rem,
+    '3':3rem,
+    '4':4rem,
+    '5':5rem
+);
+
+@each $key,$val in $gap{
+    .gap-#{$key} > * {
+        padding: $val;
+    }
+    .gap-#{$key}{
+        margin-left: -$val;
+        margin-right: -$val;
+    }
+}

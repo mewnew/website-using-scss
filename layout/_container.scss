@@ -1,0 +1,15 @@
+@use '../layout/breakpoints';
+.container{
+    max-width: 1200px;
+    width:90%;
+    margin: 0 auto;
+    // border: 2px solid red;
+    // @include breakpoints.sm{
+    //     width: 70%;
+    // }
+    // @include breakpoints.lg{
+    //     width: 90%;
+    // }
+   
+    
+}

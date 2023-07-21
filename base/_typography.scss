@@ -1,0 +1,70 @@
+@use '../abstracts/variables';
+
+// font sizes
+$font-size:(
+    'xs':1rem,
+    'sm':variables.$base-font-size,
+    'md':variables.$base-font-size*2,
+    'lg':variables.$base-font-size*3,
+    'xl':variables.$base-font-size*4,
+    'xxl':variables.$base-font-size*5,
+    'vxxl':variables.$base-font-size*7
+   
+);
+
+@each $key,$val in $font-size{
+    .text-#{$key}{
+        font-size: $val;
+    }
+}
+
+
+// text transformation
+.textcase-u{
+    text-transform: uppercase;
+}
+
+// letter space
+$letter-space:(
+    'sm':0.1em,
+    'md':variables.$base-letter-spacing,
+    'lg':0.2em,
+    'xl':0.3em
+);
+
+@each $key,$val in $letter-space{
+    .lspace-#{$key}{
+        letter-spacing:$val;
+    }
+}
+
+// line height
+.lheight{
+    line-height: variables.$base-line-height;
+}
+
+// font weight
+$font-weight:(
+    'vlight':100,
+    'light':300,
+    'regular':400,
+    'semibold':600,
+    'bold':800
+);
+
+@each $key,$val in $font-weight{
+    .text-#{$key}{
+        font-weight: $val;
+    }
+}
+
+$text-align:(
+    'c':center,
+    'l':left,
+    'r':right
+);
+@each $key,$val in $text-align{
+    .textalign-#{$key}{
+        text-align:$val;
+    }
+}

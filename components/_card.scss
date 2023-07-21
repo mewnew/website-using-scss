@@ -1,0 +1,13 @@
+@use '../abstracts/variables';
+.card{
+    padding: variables.$base-padding;
+    .card__title{
+        font-size: variables.$base-font-size*2;
+        color:darken(variables.$tertiary, 20%);
+
+    }
+    .card__text{
+        font-size: variables.$base-font-size;
+        color:lighten(variables.$tertiary, 20%);
+    }
+}

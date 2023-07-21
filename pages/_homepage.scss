@@ -1,0 +1,667 @@
+@use '../abstracts/variables';
+@use '../layout/breakpoints';
+
+// navbar styling
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.navbar{
+    position:absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+
+}
+.navbar input[type=checkbox]{
+    width: 70px;
+    height: 70px;
+    position: fixed;
+    opacity: 0;
+    z-index: 2;
+}
+
+.navbar input[type=checkbox]:checked ~ .navbar__menu-lines .menu-line1{
+    transform-origin: top left;
+  transform: rotate(45deg)  ;
+}
+.navbar input[type=checkbox]:checked ~ .navbar__menu-lines .menu-line3{
+    transform-origin: top left;
+  transform: rotate(-45deg);
+}
+.navbar input[type=checkbox]:checked ~ .navbar__menu-lines .menu-line2{
+  transform: scaleY(0);
+}
+.navbar input[type=checkbox]:checked ~ .navbar__menu-lines{
+    padding-left: 8px;
+}
+.navbar__logo{
+    font-family: variables.$font-family-secondary;
+}
+
+.navbar__menu-lines__wrapper{
+    width: 70px;
+    height: 70px;
+}
+.navbar__menu-lines{
+    width: 70px;
+    height: 70px;
+    padding: 23px 0px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: variables.$secondary; 
+    position: fixed;   
+    box-shadow:variables.$base-box-shadow;
+}
+.navbar input[type=checkbox]:checked ~ .navbar__menu-site{
+
+    transform: translateX(0px);
+}
+
+
+.menu-line{
+    border: 1px solid black;
+    width: 30px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar__menu-site {
+    background: variables.$primary;
+    padding: 15rem;
+    height: 100vh;
+    transition:all 0.3s ease-in-out;
+    transform: translateX(-1600px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+
+
+    ul{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+    }
+    a{
+        font-size: variables.$base-font-size*2;
+        text-transform: uppercase;
+        
+        color: white;
+        font-weight: 300;
+        padding: 2rem;
+        position: relative;
+        z-index: 102;
+        background: linear-gradient(to bottom right, rgba(255, 255, 255, 0) 50%,white 50%);
+        background-size: 200% 200%;
+        background-position: top left;
+        background-repeat: no-repeat;
+        transition: all 0.3s ease-in-out;
+       
+        &:hover{
+            background-position: bottom right;
+            color: purple;
+            
+        }
+        
+    }
+
+}
+
+.header{
+    height: 90vh;
+    clip-path: polygon(0 0,100% 0,100% 80%, 0 100%);
+    h1{
+        word-wrap: break-word;
+    }
+}
+
+
+
+
+// about section styling
+.about__img-collection{
+    position: relative;  
+    height: 400px;
+    margin: auto;
+    @include breakpoints.sm{
+        height: 200px;
+    }
+    @include breakpoints.lg{
+       height: 400px;
+    }
+
+}
+
+.about__img{
+    position: absolute;
+    padding: 2rem;
+    box-sizing: content-box;
+    border-radius: 30px;
+    @include breakpoints.sm{
+        width: 35%;
+        height: 13rem;
+    }
+    @include breakpoints.lg{
+        width: 50%;
+        height: 20rem;
+    }
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: variables.$base-box-shadow;
+}
+&:hover{
+    border: 10px solid darken(blue,30%);
+    box-sizing: content-box;
+    border-radius: 30px;
+    z-index: 10;
+}
+ 
+
+}
+.about__img--tech3{
+    @include breakpoints.sm{
+        top: -11%;
+        left: 29%;
+    }
+    @include breakpoints.lg{
+        top: 35%;
+        left: 19%;
+    }
+    
+}
+.about__img--tech2{
+    top: 15%;
+    left: 39%;
+    @include breakpoints.sm{
+        top: 0;
+        left: 57%;
+    }
+    @include breakpoints.lg{
+        top: 15%;
+        left: 39%;
+
+    }
+}
+
+.company-features{
+    transform: skewY(-5deg);
+}
+.company-features > *{
+    transform: skewY(5deg);
+}
+.company-features__card{
+    transition: all 0.3s ease-in-out;
+    &:hover{
+        transform: translateY(-25px);
+    }
+}
+
+
+
+// technology styling
+.technology__cards{
+    background-color: variables.$secondary;
+    position: relative;
+    img{
+        height: 250px;
+        object-fit: cover;
+        object-position: center;
+        clip-path: polygon(0 0 , 100% 0, 100% 90%, 0 100%);
+    }
+    &__heading{
+        position: absolute;
+        top: 130px;
+        right: 25px;
+        color: white;
+        text-transform: uppercase;
+        font-size: 20px;
+        text-align: right;
+         
+        h2{
+           font-weight: 300;
+           display:block;
+           width: fit-content;
+           text-align: right;
+           padding: 0.5rem 2rem;
+           margin-left: auto;
+        }   
+    }
+    &__techlist{
+        text-align: center;
+        color: rgba(128, 128, 128, 0.85);
+        font-size: variables.$base-font-size;
+        padding: 3rem 7rem;
+        p{
+            border-bottom: 1px solid rgba(128, 128, 128, 0.182);
+            padding: 1rem;
+        }
+        p:last-child{
+            border-bottom: none;
+        }
+    }
+}
+
+.technology__cards--1 .technology__cards__heading h2{
+    background-image: linear-gradient(to bottom right,purple, indigo);
+}
+.technology__cards--2 .technology__cards__heading h2{
+    background-image: linear-gradient(to bottom right,darkblue,rgba(0, 0, 0, 0.774));
+}
+.technology__cards--3 .technology__cards__heading h2{
+    background-image: linear-gradient(to bottom right,rgb(171, 108, 208),rgba(128, 0, 128, 0.778));
+}
+.technology a{
+    display: block;
+    width: fit-content;
+    margin:7rem auto;
+}
+.technology__cards{
+    backface-visibility: hidden;
+}
+.inner-flipper{
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease-in-out ;
+        box-shadow: variables.$base-box-shadow;
+
+    
+}
+.technology__cards--backward{
+
+    a{
+        margin-bottom: 0;
+    }
+    @include breakpoints.sm{
+        position: unset;
+        transform: none;
+        padding: 7rem;
+        clip-path: polygon(0 10%,100% 0,100% 100%, 0 100%);
+        margin-top: -4rem;
+        text-align: center
+    }
+    @include breakpoints.lg{
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        transform: rotateY(180deg);
+        backface-visibility: hidden; 
+        margin-top: 0;
+        clip-path: none;
+        }
+    
+    
+}
+.technology__cards--3--backward{
+    background: linear-gradient(to bottom right,rgb(160, 10, 246),rgba(128, 0, 128, 0.933));
+
+}
+.technology__cards--2--backward{
+    background-image: linear-gradient(to bottom right,darkblue,rgba(0, 0, 0, 0.774));
+
+}
+.technology__cards--1--backward{
+    background-image: linear-gradient(to bottom right,purple, indigo);
+
+}
+.outer-flipper{
+    perspective:1000px;
+}
+@include breakpoints.lg{
+    .outer-flipper:hover .inner-flipper{
+    transform: rotateY(180deg);
+}
+}
+
+
+
+// tech story styling
+.tech-story{
+    position:relative;
+ 
+    h2{
+        word-wrap: break-word;
+    }
+    video{
+        width: 100%;
+        height: 100%;
+        object-fit:cover ;
+        object-position: center;
+        display:block;
+        opacity: 0.3;
+        position: absolute;
+        top:0;
+        z-index: -2;
+    }
+    a{
+        display: block;
+        width: fit-content;
+        margin: 5rem auto;
+    }
+}
+
+.tech-story__card{
+    @include breakpoints.md{
+      transform: skewX(-15deg);  
+      > *{
+        transform: skewX(15deg);
+    }
+    }
+    
+    color: white;
+    padding: 7rem 5rem;
+    box-shadow: variables.$base-box-shadow;
+    &__text{
+        z-index: 1;
+    }
+    &__img{
+        position:relative;
+        float: left;
+        shape-outside: circle();
+        margin-right: 6rem;
+        z-index: 2;
+        img{
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+            @include breakpoints.sm{
+                width: 90px;
+                height: 90px;
+            }
+            @include breakpoints.md{
+                width: 150px;
+            height: 150px;
+            }
+        } 
+        
+    }
+    &:hover .tech-story__card__img::after{
+        top: 50%;
+        opacity: 1;
+    }
+    &:hover  img{
+        filter: blur(2px);
+    }
+  
+ 
+}
+@mixin image_after_content{
+    font-size: 2rem;
+    position: absolute;
+    top: 110%;
+    opacity: 0;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    z-index: 3;
+}
+.tech-story__card__img{
+    &--1{
+        &::after{
+        content: 'Jack Smith';
+        @include image_after_content;
+        }
+    }
+    &--2{
+        &::after{
+        content: 'Tom wilson';
+        @include image_after_content;
+        }
+    }
+}
+
+.tech-story a{
+    display: block;
+    width: fit-content;
+    margin: 5rem auto;
+}
+
+
+
+// contact styling
+.contact{
+    .contact-box{
+        position: relative;
+        z-index: 1;
+        .contact-box__form{
+            background-color: rgba(255, 255, 255, 0.894);
+            width: 100%;
+            @include breakpoints.lg{
+                clip-path: polygon(0 0,60% 0,40% 100%, 0 100%);
+
+                
+            }
+            @include breakpoints.sm{
+
+
+            }
+        }
+        img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            bottom: 0;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+     
+        }
+        h3{
+            display: inline-block;
+        }
+    
+        input[type=text],input[type=email]{
+            display: block;
+            padding: 1.5rem 2rem;
+            background-color: rgba(255, 255, 255, 0.653);
+            border: none;
+            outline: none;
+            font-size: variables.$base-font-size;
+            color: variables.$tertiary;
+            @include breakpoints.sm{
+                width: 100%;
+            }
+            @include breakpoints.lg{
+                width: 30%;
+            }
+        
+            &:focus{
+                border-bottom: 2px solid variables.$primary;
+              
+                & + span{
+                    visibility: visible;
+                }
+               
+            }
+       
+            }
+            span{
+                display: block;
+                padding: 1rem 2rem;
+                font-size: 1.3rem;
+                color: gray;
+                visibility: hidden;
+            }
+         .text-input,.email-input{
+            margin-bottom: 2rem;
+         }
+      
+        .radio-container{
+            position: relative;
+            @include breakpoints.sm{
+                display: block;
+            }
+            @include breakpoints.lg{
+                display: inline-block;
+            }
+
+        }
+        .radio-container:last-of-type{
+            margin-left: 7rem;
+            @include breakpoints.sm{
+                margin-left: 0;
+                margin-top: 3rem;
+            }
+            @include breakpoints.lg{
+                margin-left: 7rem;
+            }
+        }
+        input[type=radio]{
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            transform: translateY(-50%);
+            width: variables.$base-font-size;
+            height: variables.$base-font-size;
+            z-index: 5;
+            opacity: 0;
+            &:checked + label::before{
+                background: radial-gradient(lighten(variables.$primary,10%) 50%,white 50%);
+            }
+            + label{
+                font-size: variables.$base-font-size;
+                color: variables.$tertiary;
+                position: relative;
+                padding-left: 50px;
+                display: inline-block;
+                &::before{
+                    content: "";
+                    display: inline-block;
+                    height:140%;
+                    aspect-ratio: 1/1;
+                    border: 5px solid lighten(variables.$primary,10%);
+                    border-radius: 50%;
+                    position: absolute;
+                    top: -4px;
+                    left: 0px;
+                  
+                }
+            }
+            
+        }
+        }
+        a{
+            display: block;
+            width: fit-content;
+        }
+    }
+    
+    
+
+    
+// footer section styling
+
+.footer__sitemap a{
+    color: variables.$secondary;
+    font-size: variables.$base-font-size;
+    text-transform: uppercase;
+}
+.footer__sitemap li{
+    display: block;
+}
+.footer__sitemap,.footer__info{
+    border-top: 1px solid variables.$secondary;
+    padding-top: 2rem;
+
+}
+.footer > div:first-child{
+    @extend .navbar__logo;
+}
+.footer .container > .row:first-of-type{
+    @include breakpoints.sm{
+        justify-content: center;
+    }
+    @include breakpoints.lg{
+        justify-content: space-between;
+    }
+}
+.footer__info{
+    @include breakpoints.sm{
+        margin-top: 7rem;
+    }
+    @include breakpoints.lg{
+        margin-top:0;
+    }
+}
+
+.heading-hover{
+    &:hover{
+        transform: skew(15deg,5deg) scale(1.1);
+        text-shadow: 2px 2px 115px black;
+      
+    }
+}
+
+.popup{
+    box-shadow: variables.$base-box-shadow;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(128, 128, 128, 0.405);
+    backdrop-filter: blur(5px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 155;
+}
+.popup:target{
+    display: flex;
+    animation: grow 0.5s ;
+    
+}
+@keyframes grow{
+    from{
+        transform: scale(0.5);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+.technology{
+    position: relative;
+}
+.popup-content{
+    background-color:white;
+    width: min(1200px,100%);
+    position: relative;
+    img{
+        display: block;
+        width: 100%;
+        height: 50%;
+    }
+    a:first-of-type{
+        margin: 0px;
+        margin-top: 30px;
+        
+    }
+    a:last-of-type{
+        margin: 0px;
+        position: absolute;
+        top: 40px;
+        right: 40px;
+    }
+     > .row > .cols-4-sm > .row{
+        height: 100%;
+    }
+}
+
